@@ -1,0 +1,52 @@
+version: '3.9'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/local.Dockerfile
+    image: service-tms
+    env_file: docker-compose.env
+    tty: true
+    stdin_open: true
+    environment:
+      SERVICES: api
+      PORT: 3000
+    ports:
+      - '3000:3000'
+    depends_on:
+      - nats
+      - redis
+      - db
+
+  auth:
+    build:
+      context: .
+      dockerfile: docker/local.Dockerfile
+    image: tms-service
+    tty: true
+    env_file: docker-compose.env
+    environment:
+      SERVICES: auth
+    depends_on:
+      - nats
+      - redis
+      - db
+
+  nats:
+    image: nats:2.8-alpine
+
+  redis:
+    image: redis:7-alpine
+
+  db:
+    image: postgres:14-alpine
+    env_file: ./docker-compose.env
+    restart: unless-stopped
+    volumes:
+      - storage_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+volumes:
+  storage_data:

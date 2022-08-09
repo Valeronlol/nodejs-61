@@ -1,0 +1,7 @@
+node_modules
+docker-compose.env
+docker-compose.yml
+Dockerfile
+.vscode
+README.md
+.idea

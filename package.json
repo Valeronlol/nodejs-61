@@ -1,0 +1,34 @@
+{
+  "name": "tms",
+  "version": "1.0.0",
+  "description": "TMS project",
+  "scripts": {
+    "dev": "moleculer-runner --repl --hot services/*.service.js",
+    "start": "moleculer-runner",
+    "lint:fix": "eslint ./services moleculer.config.js --fix",
+    "dc:up": "docker-compose up --build -d",
+    "dc:logs": "docker-compose logs -f",
+    "dc:down": "docker-compose down"
+  },
+  "author": "TMS",
+  "dependencies": {
+    "argon2": "^0.28.7",
+    "ioredis": "^4.28.5",
+    "knex": "^2.2.0",
+    "moleculer": "^0.14.21",
+    "moleculer-web": "^0.10.4",
+    "nats": "^2.7.1",
+    "pg": "^8.7.3",
+    "redlock": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.6.5",
+    "eslint": "^8.21.0",
+    "eslint-config-prettier": "^8.5.0",
+    "moleculer-repl": "^0.7.1",
+    "prettier": "^2.7.1"
+  },
+  "engines": {
+    "node": ">= 18.x.x"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "commonjs": true
+  },
+  "extends": ["eslint:recommended", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": [
+      "warn",
+      4,
+      {
+        "ignoredNodes": ["TemplateLiteral"],
+        "SwitchCase": 1
+      }
+    ],
+    "quotes": ["warn", "single"],
+    "semi": ["warn", "never"],
+    "no-var": ["error"],
+    "no-console": ["off"],
+    "no-unused-vars": ["warn"],
+    "no-mixed-spaces-and-tabs": ["warn"],
+    "require-atomic-updates": 0,
+    "max-len": ["warn", 120],
+    "no-case-declarations": 0
+  }
+}
